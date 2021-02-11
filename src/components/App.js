@@ -1,7 +1,7 @@
 import React from "react";
 import CharacterList from "./CharacterList";
 import CharacterProfile from "./CharacterProfile";
-import CharacterWorld from "./CharacterWorld";
+import LatestYear from "./LatestYear";
 import CharacterMovies from "./CharacterMovies";
 // import "../../presentation/css/styles.css";
 
@@ -12,8 +12,8 @@ const App = () => (
       <CharacterProfile />
     </div>
     <div className="row">
-      <CharacterWorld />
       <CharacterMovies />
+      {/* <LatestYear /> */}
     </div>
   </div>
 );

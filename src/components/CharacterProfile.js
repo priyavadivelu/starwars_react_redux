@@ -1,19 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-const CharacterProfile = ({ profile, world }) =>
-  <div id='character-profile' className='col-md-6'>
+const CharacterProfile = ({ profile }) => (
+  <div id="character-profile" className="col-md-6">
     <h1>Profile</h1>
     {profile.name && <p>Name: {profile.name}</p>}
     {profile.height && <p>Height: {profile.height}cm</p>}
     {profile.mass && <p>Weight: {profile.mass}kg</p>}
-    {world.name && <p>World: {world.name}</p>}
     {profile.gender && <p>Gender: {profile.gender}</p>}
-  </div>;
+  </div>
+);
 
-const mapStateToProps = ({ character: { profile, world } }) => ({
+const mapStateToProps = ({ character: { profile } }) => ({
   profile,
-  world,
 });
 
 export default connect(mapStateToProps)(CharacterProfile);

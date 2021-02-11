@@ -1,34 +1,51 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import {
   setCurrentCharacter,
   getCharacterProfile,
-} from '../redux/character/actions';
+} from "../redux/character/actions";
 
-const CharacterList = ({ characters, setCharacter }) =>
-  <div id='character-list' className='col-md-6'>
+const handleChange = (event) => {
+  setCurrentCharacter(event.target.value);
+  getCharacterProfile(event.target.value);
+};
+
+const CharacterList = ({ characters, setCharacter }) => (
+  <div id="character-list" className="col-md-6">
     <h1>Characters</h1>
-    <ul>
-      {characters.map((c, i) =>
-        <li
-          onClick={setCharacter(i + 1)}
-          key={c.name}
-        >
+    {/* <ul>
+      {characters.map((c, i) => (
+        <li onClick={setCharacter(i + 1)} key={c.name}>
           {c.name}
         </li>
-      )}
-    </ul>
-  </div>;
+      ))}
+    </ul> */}
+
+    <select onChange={setCharacter}>
+      {characters.map((c, i) => (
+        <option key={i} value={i + 1}>
+          {c.name}
+        </option>
+      ))}
+    </select>
+  </div>
+);
 
 const mapStateToProps = ({ characters }) => ({
   characters,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCharacter(id) {
+const mapDispatchToProps = (dispatch) => ({
+  // setCharacter(event) {
+  //   return () => {
+  //     dispatch(setCurrentCharacter(event.target.value));
+  //     dispatch(getCharacterProfile(event.target.value));
+  //   };
+  // },
+  setCharacter(event) {
     return () => {
-      dispatch(setCurrentCharacter(id));
-      dispatch(getCharacterProfile(id));
+      dispatch(setCurrentCharacter(event.target.value));
+      dispatch(getCharacterProfile(event.target.value));
     };
   },
 });
