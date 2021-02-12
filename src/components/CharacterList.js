@@ -12,22 +12,18 @@ const CharacterList = ({ characters, setCharacter }) => {
 
   return (
     <div id="character-list" className="col-md-6">
-      <h1>Characters</h1>
-      {/* <ul>
-        {characters.map((c, i) => (
-          <li onClick={setCharacter(i + 1)} key={c.name}>
-            {c.name}
-          </li>
-        ))}
-      </ul> */}
-
-      <select onChange={handleChange}>
-        {characters.map((c, i) => (
-          <option key={i} value={i + 1} id={i}>
-            {c.name}
-          </option>
-        ))}
-      </select>
+      <div className="app-card">
+        <div className="app-card-header">Choose Character</div>
+        <div className="app-card-body app-character-list">
+          <select onChange={handleChange}>
+            {characters.map((c, i) => (
+              <option key={i} value={i + 1} id={i}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
