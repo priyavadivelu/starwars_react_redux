@@ -19,14 +19,19 @@ export function setCharacterProfile(profile) {
 }
 
 export function getCharacterProfile(id) {
-  console.log("char profile called here", id);
-  return (dispatch) =>
+  return (dispatch) => {
     fetch(`${API_URL}/people/${id}`)
-      .then((res) => res.json())
+      .then((res) => {
+        // console.log(`got res: ${JSON.stringify(res)}`);
+        return res.json();
+      })
       .then((profile) => {
+        // console.log(`got profile: ${profile}`);
         dispatch(setCharacterProfile(profile));
         dispatch(getCharacterMovies(profile.films));
-      });
+      })
+      .catch((e) => console.log(e));
+  };
 }
 
 export function setCharacterMovies(movies) {

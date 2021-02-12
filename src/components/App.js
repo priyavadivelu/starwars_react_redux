@@ -13,7 +13,7 @@ const App = () => (
     </div>
     <div className="row">
       <CharacterMovies />
-      {/* <LatestYear /> */}
+      <LatestYear />
     </div>
   </div>
 );
